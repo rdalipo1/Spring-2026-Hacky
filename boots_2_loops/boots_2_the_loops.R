@@ -36,7 +36,7 @@ curve(dnorm(x, 0, 10/sqrt(n_ind)), -4, 4, col = "red", lwd = 3, add = T)
 
 # it looks like our approximation is pretty close to the true sampling distribution!
 # we run into a problem here though because we probably can't sample from the population
-# 10000. Enter the bootstrap! We make--a pretty big--assumption that our sample represents the 
+# 10000 times! Enter the bootstrap! We make--a pretty big--assumption that our sample represents the 
 # population and resample from it.
 
 # start by taking a sample from the population
@@ -129,12 +129,11 @@ abline(v = quantile(slope, c(.025, .975)), col = "red")
 # let's plot the fit!
 # first make a vector to get the expected values over
 z <- seq(min(z_size), max(z_size), l = 100)
-p <- plogis(fit$coefficients[1] + fit$coefficients[2] * z)
 
 plot(NULL, ylim = c(0, 1), xlim = c(-2,3), xlab = "Standardized Size", ylab = "Prob. Survive")
 points(alive ~ z_size)
 
-#CHALLENGE 4: Add 100 lines using the bootstrapped slopes and intercepts (and a for loop)
+#CHALLENGE 4: Add 100 lines using the bootstrapped slopes and intercepts (and a for loop!! =)
 
 # HINT, if I want to add the first bootstrapped sample:
 lines(plogis(intercept[1] + slope[1]*z) ~ z, col = "grey")
